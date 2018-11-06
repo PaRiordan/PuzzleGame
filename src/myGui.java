@@ -1,13 +1,16 @@
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class myGui extends JFrame {
+
+public class myGui extends JFrame implements ActionListener {
 
     public myGui(){
 
 
-            //vreating JFrame
+            //Creating JFrame
         setTitle("Puzzle ");
         setLocation(550,20); //location on screen
         setSize(1080 ,920); // size
@@ -29,53 +32,74 @@ public class myGui extends JFrame {
         titlePanel.setBackground(Color.cyan);
         titlePanel.setPreferredSize(new Dimension(200,100));
 
+
         //editing label
        //titleLabel.setBackground(Color.BLACK);
         titleLabel.setPreferredSize(new Dimension(100,100));
-
-
+        titleLabel.setHorizontalAlignment(JLabel.CENTER);
         titlePanel.add(titleLabel);
         container.add(titlePanel,BorderLayout.PAGE_START);
+
+
 
 
 
         //layout for menu area
 
         JPanel menuPanel = new JPanel();
-        JLabel menuLabel = new JLabel("menu");
-        JLabel menuLabel2 = new JLabel("asdasdas");
+        JLabel startLabel = new JLabel(); //start button
+        JLabel menuLabel = new JLabel("Welcome");
+        JLabel exitLabel = new JLabel(); //exit button
 
-        //set menuLabel
-        menuLabel.setPreferredSize(new Dimension(300,100));
-        menuLabel.setBackground(Color.BLUE);
-        menuLabel.setLayout(new GridLayout());
+        // menuLabel game text
+        menuLabel.setPreferredSize(new Dimension(300,150));
+        menuLabel.setText("welcome to the jungle");
+        menuLabel.setHorizontalAlignment(JLabel.CENTER);
+        menuLabel.setBackground(Color.GREEN);//
+        menuPanel.add(menuLabel);
 
-        menuLabel2.setPreferredSize(new Dimension(300,100));
-        menuLabel2.setBackground(Color.GREEN);
-        menuLabel2.setLayout(new GridLayout());
-        //noy finished
-        menuPanel.add(menuLabel2);
 
+
+
+        //set startLabel start button
+        startLabel.setPreferredSize(new Dimension(200,100));
+        startLabel.setBackground(Color.BLUE);
+        startLabel.setLayout(new GridLayout());
 
 
         JButton startButton = new JButton("START");
         startButton.setLayout( new FlowLayout());
         startButton.setAlignmentX(0.5f);
         startButton.setBackground(Color.BLACK);
-        setPreferredSize(new Dimension(300,120));
-        menuLabel.add(startButton);
+        setPreferredSize(new Dimension(100,120));
+        startLabel.add(startButton);
+        menuPanel.add(startLabel);
+
+        //set exitLabel exit button
+
+        exitLabel.setPreferredSize(new Dimension(200,100));
+        exitLabel.setBackground(Color.BLUE);
+        exitLabel.setLayout(new GridLayout());
 
         JButton exitButton = new JButton("Exit");
         exitButton.setAlignmentX(0.5f);
         exitButton.setBackground(Color.BLUE);
-        menuLabel2.add(exitButton);
+        exitButton.addActionListener(this);
+
+        exitLabel.add(exitButton);
+
+        menuPanel.add(exitLabel);
+
+
+
+
+
 
 
         menuPanel.setPreferredSize(new Dimension(300,100));
         menuPanel.setBackground(Color.cyan);
 
 
-        menuPanel.add(menuLabel);
         container.add(menuPanel,BorderLayout.LINE_START);
 
 
@@ -103,6 +127,7 @@ public class myGui extends JFrame {
             for (int j =0;j<4;j++){
                 JButton num = new JButton();
                 squares [i] [j] = num;
+                num.addActionListener(this);
                 buttonPanal.add(num);
             }//end of second for
         }//end of first for
@@ -113,7 +138,14 @@ public class myGui extends JFrame {
     } // end of  myGui method
 
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+       System.exit(0);
+
+    }
 } // end of myGui class
+
+
 
 
 // look at later
