@@ -14,6 +14,8 @@ public class myGui extends JFrame implements ActionListener {
 
 
     private JMenu playerMenu;
+    private JMenu scoreMenu;
+    private JMenu exitMenu;
 
 
     public myGui(){
@@ -38,7 +40,7 @@ public class myGui extends JFrame implements ActionListener {
         //layout are for title panel
 
         JPanel titlePanel = new JPanel();
-        JLabel titleLabel = new JLabel("Puzzle game");
+        JLabel titleLabel = new JLabel("Memory Muscle");
 
         // editing Panel
         titlePanel.setBackground(Color.cyan);
@@ -51,6 +53,12 @@ public class myGui extends JFrame implements ActionListener {
         setJMenuBar(menuBar);
         menuBar.setVisible(true);
         menuBar.add(playerMenu);
+
+        createScoreMenu();
+        menuBar.add(scoreMenu);
+
+        createExitMenu();
+        menuBar.add(exitMenu);
 
         //editing label
         //titleLabel.setBackground(Color.BLACK);
@@ -77,15 +85,15 @@ public class myGui extends JFrame implements ActionListener {
         menuLabel.setPreferredSize(new Dimension(300,150));
         menuLabel.setText("Are you ready \n to Play Memory Muscle");
         menuLabel.setHorizontalAlignment(JLabel.CENTER);
-        menuLabel.setBackground(Color.GREEN);//
+        menuLabel.setBackground(Color.GREEN);
         menuPanel.add(menuLabel);
 
         // menuLabel game text
         menuLabel.setPreferredSize(new Dimension(300,150));
-        menuLabel.setText("welcome to the jungle");
+      //  menuLabel.setText("welcome to the jungle");
         menuLabel.setHorizontalAlignment(JLabel.CENTER);
         menuLabel.setBackground(Color.GREEN);//
-        menuPanel.add(menuLabel);
+       // menuPanel.add(menuLabel);
 
 
 
@@ -106,6 +114,7 @@ public class myGui extends JFrame implements ActionListener {
         startButton.setAlignmentX(0.5f);
         startButton.setBackground(Color.BLACK);
         setPreferredSize(new Dimension(100,120));
+        startButton.addActionListener(this);
         startLabel.add(startButton);
         menuPanel.add(startLabel);
 
@@ -120,38 +129,12 @@ public class myGui extends JFrame implements ActionListener {
         exitButton.setBackground(Color.BLUE);
         exitButton.addActionListener(this);
 
-
-
-
         exitLabel.add(exitButton);
-
-        menuPanel.add(exitLabel);
-
-
-
-
-
 
         menuPanel.add(exitLabel);
         menuPanel.setPreferredSize(new Dimension(300,100));
         menuPanel.setBackground(Color.cyan);
-
-
         container.add(menuPanel,BorderLayout.LINE_START);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         // layout area for Game area.
 
@@ -160,19 +143,22 @@ public class myGui extends JFrame implements ActionListener {
 
 
         buttonPanal.setLayout(new GridLayout(4,4));
-        JLabel[][] squares = new JLabel[4][4]; // an array of squares
+        JButton[][] squares = new JButton[4][4]; // an array of squares
+
         for (int i =0; i<4; i++){ // create a loop of square buttons
             for (int j =0;j<4;j++){
-                JLabel num = new JLabel();
+                JButton num = new JButton();
+
                 Border border =  BorderFactory.createLineBorder(Color.BLACK,2);  //https://examples.javacodegeeks.com/desktop-java/swing/jlabel/create-jlabel-with-border/
+                num.setBackground(Color.BLUE);
                 num.setBorder(border);
                 squares [i] [j] = num;
-
-                //num.addActionListener(this);
-
-
-
                 buttonPanal.add(num);
+
+
+                num.addActionListener(this);
+
+
             }//end of second for
         }//end of first for
 
@@ -184,27 +170,46 @@ public class myGui extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+       // if (e.getActionCommand().equals())
+        if (e.getActionCommand().equals("START")){
+            JOptionPane.showMessageDialog(null,"Please select a player before starting");
+        }
+        else
         System.exit(0);
 
     }
     private void createPlayerMenu(){
         // adding the drop-down items for player menu and assigning each an action listener
         playerMenu = new JMenu("Player");
+        playerMenu.setMenuLocation(10,26);
+
         JMenuItem item;
-        playerMenu.setMenuLocation(4,6);
         item = new JMenuItem("Select");
         item.addActionListener(this);
         playerMenu.add(item);
-        // item = new JMenuItem("Display");
-        //item.addActionListener(this);
-        //playerMenu.add(item);
+
+    }
+
+    private void createScoreMenu(){
+        scoreMenu = new JMenu("Score");
+        scoreMenu.setMenuLocation(10,26);
+
+        JMenuItem scoreItem;
+        scoreItem = new JMenuItem("Display");
+        scoreMenu.add(scoreItem);
+
     }
 
 
+    private void createExitMenu(){
+        exitMenu = new JMenu("exit");
+        exitMenu.setMenuLocation(10,26);
 
-
-
+        JMenuItem exitItem;
+        exitItem = new JMenuItem("You Sure?");
+        exitItem.addActionListener(this);
+        exitMenu.add(exitItem);
+    }
 
 
 
