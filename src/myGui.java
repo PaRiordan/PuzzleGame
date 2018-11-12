@@ -17,7 +17,7 @@ public class myGui extends JFrame implements ActionListener {
     private JMenu playerMenu;
     private JMenu scoreMenu;
     private JMenu exitMenu;
-   public Container container;
+  // public Container container;
 
 
     public myGui() {
@@ -137,8 +137,9 @@ public class myGui extends JFrame implements ActionListener {
         // layout area for Game area.
 
 
-
-
+/*
+            create this in the game class?  then add it to the container
+            gridlayout?
 
         JPanel buttonPanel = new JPanel();
 
@@ -174,7 +175,7 @@ public class myGui extends JFrame implements ActionListener {
 
 
         container.add(buttonPanel, BorderLayout.CENTER);
-
+*/
 
     } // end of  myGui method
 
