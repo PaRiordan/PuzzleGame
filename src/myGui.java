@@ -17,6 +17,7 @@ public class myGui extends JFrame implements ActionListener {
     private JMenu playerMenu;
     private JMenu scoreMenu;
     private JMenu exitMenu;
+   public Container container;
 
 
     public myGui() {
@@ -136,10 +137,13 @@ public class myGui extends JFrame implements ActionListener {
         // layout area for Game area.
 
 
-        JPanel buttonPanal = new JPanel();
 
 
-        buttonPanal.setLayout(new GridLayout(4, 4));
+
+        JPanel buttonPanel = new JPanel();
+
+
+        buttonPanel.setLayout(new GridLayout(4, 4));
 
         JButton[][] squares = new JButton[4][4]; // an array of squares
         int counter = 1;
@@ -151,14 +155,17 @@ public class myGui extends JFrame implements ActionListener {
                 num.setBorder(border);
                 squares[i][j] = num;
                 JLabel[] imageLabel = new JLabel[1];
+
                 ImageIcon icon = createImageIcon("dog.jpg"); //https://docs.oracle.com/javase/tutorial/uiswing/components/icon.html
                 num.setIcon(icon);
 
                 num.setText("" + counter);
                 counter++;
-                buttonPanal.add(num);
+                buttonPanel.add(num);
 
-               // num.setVisible(false);
+
+
+
                 num.addActionListener(this);
 
             }//end of second for
@@ -166,30 +173,28 @@ public class myGui extends JFrame implements ActionListener {
 
 
 
-        container.add(buttonPanal, BorderLayout.CENTER);
+        container.add(buttonPanel, BorderLayout.CENTER);
 
 
     } // end of  myGui method
 
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void   actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("You Sure?") || e.getActionCommand().equals("Exit")) {
 
-            System.exit(0);
+          System.exit(0);
 
-        } else if (!e.getActionCommand().equals("Select")) {
-            JOptionPane.showMessageDialog(null, "Please select a player before starting");
         } else if
-            (e.getActionCommand().equals("Select")){
+            (e.getActionCommand().equals("Select") || e.getActionCommand().equals("START"))  {
+            selectButton();
 
 
-            //String name = JOptionPane.showInputDialog("what ur name");
-            //Player p = new Player();
-                System.exit(0);
-
-
+          //  buttonPanel.revalidate();     look into later..   https://stackoverflow.com/questions/36017159/jbutton-setvisiblefalse-setting-back-to-setvisibletrue-not-working
+            //buttonPanel.repaint();
         }
+                else
+        JOptionPane.showMessageDialog(null, "Please select a player before starting");
 
     }
 
@@ -236,11 +241,14 @@ public class myGui extends JFrame implements ActionListener {
             return null;
     }
 
-    private void Image1(){
-        JLabel image1 = new JLabel();
+      private void selectButton(){
+     // final  JLabel image1 = new JLabel();
 
+
+          String name = JOptionPane.showInputDialog(null, "Yo what will I call you?");
+
+          JOptionPane.showMessageDialog(null,"Alright "+name+ " Lets play Memory muscle");
     }
-
 
 
 } // end of myGui class
