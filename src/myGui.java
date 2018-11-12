@@ -17,7 +17,7 @@ public class myGui extends JFrame implements ActionListener {
     private JMenu playerMenu;
     private JMenu scoreMenu;
     private JMenu exitMenu;
-  // public Container container;
+   public Container container = getContentPane();
 
 
     public myGui() {
@@ -37,7 +37,7 @@ public class myGui extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // set the x button to stop the program
         setVisible(true); //Make it visible
 
-        Container container = getContentPane();
+
         container.setLayout(new BorderLayout());
 
 
@@ -135,47 +135,11 @@ public class myGui extends JFrame implements ActionListener {
         container.add(menuPanel, BorderLayout.LINE_START);
 
         // layout area for Game area.
+        JLabel wallPic = new JLabel();
+        ImageIcon icon = createImageIcon("dog.jpg");
+        wallPic.setIcon(icon);
 
-
-/*
-            create this in the game class?  then add it to the container
-            gridlayout?
-
-        JPanel buttonPanel = new JPanel();
-
-
-        buttonPanel.setLayout(new GridLayout(4, 4));
-
-        JButton[][] squares = new JButton[4][4]; // an array of squares
-        int counter = 1;
-        for (int i = 0; i < 4; i++) { // create a loop of square buttons
-            for (int j = 0; j < 4; j++) {
-                JButton num = new JButton();
-
-                Border border = BorderFactory.createLineBorder(Color.BLACK, 2);  //https://examples.javacodegeeks.com/desktop-java/swing/jlabel/create-jlabel-with-border/
-                num.setBorder(border);
-                squares[i][j] = num;
-                JLabel[] imageLabel = new JLabel[1];
-
-                ImageIcon icon = createImageIcon("dog.jpg"); //https://docs.oracle.com/javase/tutorial/uiswing/components/icon.html
-                num.setIcon(icon);
-
-                num.setText("" + counter);
-                counter++;
-                buttonPanel.add(num);
-
-
-
-
-                num.addActionListener(this);
-
-            }//end of second for
-        }//end of first for
-
-
-
-        container.add(buttonPanel, BorderLayout.CENTER);
-*/
+        container.add(wallPic, BorderLayout.CENTER);
 
     } // end of  myGui method
 
@@ -189,10 +153,11 @@ public class myGui extends JFrame implements ActionListener {
         } else if
             (e.getActionCommand().equals("Select") || e.getActionCommand().equals("START"))  {
             selectButton();
+            gameArea();
 
 
-          //  buttonPanel.revalidate();     look into later..   https://stackoverflow.com/questions/36017159/jbutton-setvisiblefalse-setting-back-to-setvisibletrue-not-working
-            //buttonPanel.repaint();
+         revalidate();  //  Got this working, it reset the area with the new method(gameArea) look into later..   https://stackoverflow.com/questions/36017159/jbutton-setvisiblefalse-setting-back-to-setvisibletrue-not-working
+                             //buttonPanel.repaint();
         }
                 else
         JOptionPane.showMessageDialog(null, "Please select a player before starting");
@@ -249,6 +214,46 @@ public class myGui extends JFrame implements ActionListener {
           String name = JOptionPane.showInputDialog(null, "Yo what will I call you?");
 
           JOptionPane.showMessageDialog(null,"Alright "+name+ " Lets play Memory muscle");
+    }
+
+
+
+
+    private void gameArea() {
+     //   create this in the game class?then add it to the container
+       // gridlayout ?
+
+                JPanel buttonPanel = new JPanel();
+
+
+        buttonPanel.setLayout(new GridLayout(4, 4));
+
+        JButton[][] squares = new JButton[4][4]; // an array of squares
+        int counter = 1;
+        for (int i = 0; i < 4; i++) { // create a loop of square buttons
+            for (int j = 0; j < 4; j++) {
+                JButton num = new JButton();
+
+                Border border = BorderFactory.createLineBorder(Color.BLACK, 2);  //https://examples.javacodegeeks.com/desktop-java/swing/jlabel/create-jlabel-with-border/
+                num.setBorder(border);
+                squares[i][j] = num;
+                JLabel[] imageLabel = new JLabel[1];
+
+                ImageIcon icon = createImageIcon("dog.jpg"); //https://docs.oracle.com/javase/tutorial/uiswing/components/icon.html
+                num.setIcon(icon);
+
+                num.setText("" + counter);
+                counter++;
+                buttonPanel.add(num);
+
+
+                num.addActionListener(this);
+
+            }//end of second for
+        }//end of first for
+
+
+        container.add(buttonPanel, BorderLayout.CENTER);
     }
 
 
