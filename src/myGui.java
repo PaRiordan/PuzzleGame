@@ -136,7 +136,7 @@ public class myGui extends JFrame implements ActionListener {
 
         // layout area for Game area.
         JLabel wallPic = new JLabel();
-        ImageIcon icon = createImageIcon("dog.jpg");
+        ImageIcon icon = createImageIcon("playingCards.jpg");
         wallPic.setIcon(icon);
 
         container.add(wallPic, BorderLayout.CENTER);
@@ -200,7 +200,7 @@ public class myGui extends JFrame implements ActionListener {
     }
 
     protected ImageIcon createImageIcon(String path) {
-        URL imgUrl = getClass().getResource("dog.jpg");
+        URL imgUrl = getClass().getResource("playingCards.jpg");
         if (imgUrl != null){
             return new ImageIcon(imgUrl);
         }else
@@ -239,8 +239,8 @@ public class myGui extends JFrame implements ActionListener {
                 squares[i][j] = num;
                 JLabel[] imageLabel = new JLabel[1];
 
-                ImageIcon icon = createImageIcon("dog.jpg"); //https://docs.oracle.com/javase/tutorial/uiswing/components/icon.html
-                num.setIcon(icon);
+              //  ImageIcon icon = createImageIcon("dog.jpg"); //https://docs.oracle.com/javase/tutorial/uiswing/components/icon.html
+                //num.setIcon(icon);
 
                 num.setText("" + counter);
                 counter++;
