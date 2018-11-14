@@ -7,22 +7,33 @@ public  class Cards {
     private int id;
     private URL img;
     private URL imgUrl;
+    private String name;
+    private ImageIcon imgIcon;
 
     public void setId(int id){
         this.id = id;
     }
 
-    public int getId(int id){
+    private int getId(int id){
         return this.id;
     }
 
-    public void setIconImage(URL img){
-        this.img = img;
-    }
+    //public void  setName(String name){this.name = name;}
 
-    private URL getIconImages(URL img) {
-        return this.img;
-    }
+    //private String getName(String name){return this.name;}
+
+    //public void setImageIcon(ImageIcon imgIcon){this.imgIcon = imgIcon;}
+    //public ImageIcon getImageIcon(ImageIcon imgIcon){return this.imgIcon;}
+
+    //public void setImageUrl(URL imgUrl){
+     //   this.img = imgUrl;
+    //}
+
+    //private URL getImagesUrl(URL imgUrl) {
+      //  return this.imgUrl;
+    //}
+
+   // public String toString() {return "id: "+ getId(id)+ "name:"+getName(name)+ "IconImage"+ getImageIcon(imgIcon);}
 
 /*
     //LOOK AT LATER

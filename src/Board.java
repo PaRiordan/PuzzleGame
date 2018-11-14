@@ -22,16 +22,74 @@ public class Board extends JFrame {
         setVisible(true); //Make it visible
 
 
-        //creating the ace of diamonds object
+        //creating card objects
+
+        //https://stackoverflow.com/questions/24099720/add-images-to-deck-of-cards-java look at.
 
         Cards ad = new Cards();
         ad.setId(1);
-        String aceDiamond = "\"H:\\Playing Cards\\PNG-cards-1.3\\ace_of_diamonds.png\"";
-        ad.setIconImage(getClass().getResource(aceDiamond));
+        //String aceDiamond = "\"H:\\cardImages\\PNG-cards-1.3\\ace_of_diamonds.png\"";
+        //ad.setImageUrl(getClass().getResource(aceDiamond));
+        //ad.setName("aceDiamonds");
+
+        Cards ac = new Cards();
+        ac.setId(2);
+        //String aceClubs = "\"H:\\cardImages\\PNG-cards-1.3\\ace_of_clubs.png\"";
+        //ac.setImageUrl(getClass().getResource(aceClubs));
+        //ac.setName("aceClubs");
+
+        Cards ah = new Cards();
+        ah.setId(3);
+        //String aceHearts = "\"H:\\cardImages\\PNG-cards-1.3\\ace_of_hearts.png\"";
+       // ah.setImageUrl(getClass().getResource(aceHearts));
+        //ah.setName("aceHearts");
+
+        Cards as = new Cards();
+        as.setId(4);
+        //String aceSpades = "\"H:\\cardImages\\PNG-cards-1.3\\ace_of_spades.png\"";
+       // as.setImageUrl(getClass().getResource(aceSpades));
+        //as.setName("aceSpades");
+
+        Cards kh = new Cards();
+        kh.setId(5);
+        //String kingHearts = "\"H:\\cardImages\\PNG-cards-1.3\\king_of_hearts.png\"";
+        //kh.setImageUrl(getClass().getResource(kingHearts));
+        //kh.setName("kingHearts");
+
+        Cards ks = new Cards();
+        ks.setId(6);
+        //String kingSpades = "\"H:\\cardImages\\PNG-cards-1.3\\king_of_spades.png\"";
+        //ks.setImageUrl(getClass().getResource(kingSpades));
+        //ks.setName("kingSpades");
+
+        Cards qc = new Cards();
+        qc.setId(7);
+        //String queenClubs = "\"H:\\cardImages\\PNG-cards-1.3\\queen_of_clubs.png\"";
+        //qc.setImageUrl(getClass().getResource(queenClubs));
+        //qc.setName("queenClubs");
+
+        Cards qd = new Cards();
+        qd.setId(8);
+        String queenDiamonds = "\"H:\\cardImages\\PNG-cards-1.3\\queen_of_diamonds.png\"";
+        ImageIcon queenD = new ImageIcon();
+        JLabel queenDlabel = new JLabel();
+        JPanel qdCard = new JPanel();
+
+        queenDiamonds = new ImageIcon(queenDiamonds + qd);
+
+
+        //qd.setName("queenDiamonds");
+        //String queenDiamonds = "\"H:\\cardImages\\PNG-cards-1.3\\queen_of_diamonds.png\"";
+        //qd.setImageUrl(getClass().getResource(queenDiamonds));
+        //qd.setImageIcon(createImageIcon("\"H:\\cardImages\\PNG-cards-1.3\\queen_of_diamonds.png\""));
+      //  qd.setImageIcon();
 
 
 
-        JOptionPane.showMessageDialog(null,ad); // test to check if the object was created
+
+
+
+        JOptionPane.showMessageDialog(null,ad.toString() + qd.toString()); // test to check if the object was created
 
     } //end of Board
 
