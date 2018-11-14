@@ -154,14 +154,25 @@ public class myGui extends JFrame implements ActionListener {
         } else if
             (e.getActionCommand().equals("Select") || e.getActionCommand().equals("START"))  {
             selectButton();
-            gameArea();
-          //  gameImages();
-            revalidate();  //  Got this working, it reset the area with the new method(gameArea) look into later..   https://stackoverflow.com/questions/36017159/jbutton-setvisiblefalse-setting-back-to-setvisibletrue-not-working
-                             //buttonPanel.repaint();
+            repaint();
+            revalidate();            //  Got this working, it reset the area with the new method(gameArea) look into later..   https://stackoverflow.com/questions/36017159/jbutton-setvisiblefalse-setting-back-to-setvisibletrue-not-working
+            Board b = new Board();
+           b.gameArea();
+
+            b.revalidate();
+
+
+       // container.repaint();
+            //buttonPanel.repaint();
+
+         //   Person P = new Player();
+           // JOptionPane.showMessageDialog(null, "test line"+ P.toString());   testing stuff
+
+
         }
                 else if (e.getActionCommand().equals("1")) {
            // gameImages();
-            gameArea();
+            //gameArea();
             revalidate();
 
             JOptionPane.showMessageDialog(null, "test line");
@@ -214,7 +225,7 @@ public class myGui extends JFrame implements ActionListener {
     }
 
     protected ImageIcon createImageIcondog(String path) {
-        URL imgUrl = getClass().getResource("dog.jpg");
+        URL imgUrl = getClass().getResource("AceDiamonds.png");
         if (imgUrl != null){
             return new ImageIcon(imgUrl);
         }else
@@ -229,79 +240,6 @@ public class myGui extends JFrame implements ActionListener {
 
           JOptionPane.showMessageDialog(null,"Alright "+name+ " Lets play Memory muscle");
     }
-
-    private void gameImages(){
-         imagePanel = new JPanel();
-
-        JLabel[][] imageLabel = new JLabel[4][4];
-        for (int i = 0; i < 4; i++) { // create a loop of square buttons
-            for (int j = 0; j < 4; j++) {
-                JLabel image = new JLabel();
-
-                //Border border = BorderFactory.createLineBorder(Color.BLACK, 2);  //https://examples.javacodegeeks.com/desktop-java/swing/jlabel/create-jlabel-with-border/
-                //num.setBorder(border);
-                //JLabel[] imageLabel = new JLabel[1];
-
-                ImageIcon icon = createImageIcondog("dog.jpg"); //https://docs.oracle.com/javase/tutorial/uiswing/components/icon.html
-                imageLabel[0][0].setIcon(icon);
-
-                imageLabel[0][0] = image;
-                // num.setIcon(icon);
-               ;
-                //num.setText("" + counter);
-                //counter++;
-                imagePanel.add(image);
-
-
-                //num.addActionListener(this);
-
-            }//end of second for
-        }
-
-    }
-
-
-
-    private void gameArea() {
-     //   create this in the game class?then add it to the container
-       // gridlayout ?
-
-                JPanel buttonPanel = new JPanel();
-
-
-        buttonPanel.setLayout(new GridLayout(4, 4));
-
-        JButton[][] squares = new JButton[4][4]; // an array of squares
-        int counter = 1;
-        for (int i = 0; i < 4; i++) { // create a loop of square buttons
-            for (int j = 0; j < 4; j++) {
-                JButton num = new JButton();
-
-                Border border = BorderFactory.createLineBorder(Color.BLACK, 2);  //https://examples.javacodegeeks.com/desktop-java/swing/jlabel/create-jlabel-with-border/
-                num.setBorder(border);
-                squares[i][j] = num;
-                //JLabel[] imageLabel = new JLabel[1];
-
-               // ImageIcon icon = createImageIcondog("dog.jpg"); //https://docs.oracle.com/javase/tutorial/uiswing/components/icon.html
-               // squares[0][0].setIcon(icon);
-               //num.setIcon(icon);
-
-                num.setText("" + counter);
-                counter++;
-                buttonPanel.add(num);
-
-
-                num.addActionListener(this);
-
-
-            }//end of second for
-        }//end of first for
-
-
-        container.add(buttonPanel, BorderLayout.CENTER);
-    }
-
-
 
 } // end of myGui class
 

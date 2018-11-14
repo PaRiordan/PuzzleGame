@@ -1,4 +1,4 @@
-public abstract class Person {
+public class Person {
 private String name;
 
     //no argument constructor for person
