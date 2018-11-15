@@ -3,12 +3,15 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.net.URL;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class Board extends JFrame {
     public  Container  con = getContentPane();
+    private static JLabel image;
 
     public Board() {
 
@@ -27,7 +30,7 @@ public class Board extends JFrame {
         //https://stackoverflow.com/questions/24099720/add-images-to-deck-of-cards-java look at.
 
         Cards ad = new Cards();
-        ad.setId(1);
+       // ad.setRanks();
         //String aceDiamond = "\"H:\\cardImages\\PNG-cards-1.3\\ace_of_diamonds.png\"";
         //ad.setImageUrl(getClass().getResource(aceDiamond));
         //ad.setName("aceDiamonds");
@@ -70,12 +73,12 @@ public class Board extends JFrame {
 
         Cards qd = new Cards();
         qd.setId(8);
-        String queenDiamonds = "\"H:\\cardImages\\PNG-cards-1.3\\queen_of_diamonds.png\"";
-        ImageIcon queenD = new ImageIcon();
-        JLabel queenDlabel = new JLabel();
-        JPanel qdCard = new JPanel();
+       // String queenDiamonds = "\"H:\\cardImages\\PNG-cards-1.3\\queen_of_diamonds.png\"";
+       // ImageIcon queenD = new ImageIcon();
+      //  JLabel queenDlabel = new JLabel();
+      //  JPanel qdCard = new JPanel();
 
-        queenDiamonds = new ImageIcon(queenDiamonds + qd);
+       //queenDiamonds = new ImageIcon(queenDiamonds + qd);
 
 
         //qd.setName("queenDiamonds");
@@ -89,7 +92,7 @@ public class Board extends JFrame {
 
 
 
-        JOptionPane.showMessageDialog(null,ad.toString() + qd.toString()); // test to check if the object was created
+      //  JOptionPane.showMessageDialog(null,ad.toString() + qd.toString()); // test to check if the object was created
 
     } //end of Board
 
@@ -102,7 +105,7 @@ public class Board extends JFrame {
         buttonPanel.setLayout(new GridLayout(4, 4));
 
         JLabel[][] squares = new JLabel[4][4]; // an array of squares
-        int counter = 1;
+       // int counter = 1;
         for (int i = 0; i < 4; i++) { // create a loop of square buttons
             for (int j = 0; j < 4; j++) {
                 JLabel num = new JLabel();
@@ -112,8 +115,8 @@ public class Board extends JFrame {
                 squares[i][j] = num;
                 //JLabel[] imageLabel = new JLabel[1];
 
-                counter++;
-                buttonPanel.add(num,BorderLayout.CENTER);
+              //  counter++;
+               buttonPanel.add(num,BorderLayout.CENTER);
 
 
                 //  num.addActionListener(this);
@@ -122,16 +125,46 @@ public class Board extends JFrame {
             }//end of second for
         }//end of first for
 
+
+
         //inputting images into an array manually
 
-        ImageIcon[] images = new ImageIcon[16];
+        ImageIcon[] images = new ImageIcon[8];
         images[0] = new ImageIcon("AceDiamonds");
         images[0] = createImageIcon("AceDiamonds"); //https://docs.oracle.com/javase/tutorial/uiswing/components/icon.html
-        squares[0][0].setIcon(images[0]);
+        squares[0][1].setIcon(images[0]);
+
+        images[3] = new ImageIcon("AceDiamonds");
+        images[3] = createImageIcon("AceDiamonds"); //https://docs.oracle.com/javase/tutorial/uiswing/components/icon.html
+        squares[0][2].setIcon(images[3]);
 
         images[1] = new ImageIcon("AceClubs");
         images[1] = createImageIcon1("AceClubs"); //https://docs.oracle.com/javase/tutorial/uiswing/components/icon.html
-        squares[0][1].setIcon(images[1]);
+        squares[0][3].setIcon(images[1]);
+
+        images[2] = new ImageIcon("AceClubs");
+        images[2] = createImageIcon1("AceClubs"); //https://docs.oracle.com/javase/tutorial/uiswing/components/icon.html
+        squares[1][0].setIcon(images[2]);
+
+
+
+
+        List<JLabel> imageArray = new ArrayList<>();
+
+        imageArray.add(squares[0][0]);
+        imageArray.add(squares[0][1]);
+        imageArray.add(squares[0][2]);
+       //Random random = new Random(3);
+
+Collections.shuffle(imageArray);
+/*
+       for (JLabel image : imageArray){
+
+
+        }
+*/
+//System.out.print(random);
+        buttonPanel.add(imageArray.get(0),BorderLayout.CENTER);
 
 
         //squares[0][0].setIcon(icon);
@@ -145,6 +178,8 @@ public class Board extends JFrame {
        con.add(buttonPanel,BorderLayout.CENTER); //gotta look at adding all this to myGui
 
     } // end of gameArea()
+
+
 
     //setting up path ways for images manually
     protected ImageIcon createImageIcon(String path) {

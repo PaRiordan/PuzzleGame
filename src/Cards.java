@@ -2,21 +2,33 @@ import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
 
+
+//https://books.trinket.io/thinkjava/chapter12.html
 public  class Cards {
 
     private int id;
-    private URL img;
-    private URL imgUrl;
-    private String name;
-    private ImageIcon imgIcon;
+   /* public static String[] Ranks = {null,"Ace", "king","Queen","Jack"};
 
+    public static  String[]Suits = {"Clubs","Diamonds","Hearts","Spades"};
+*/
     public void setId(int id){
-        this.id = id;
+      this.id = id;
     }
 
     private int getId(int id){
-        return this.id;
+       return this.id;
     }
+/*
+    public void setRanks(String[] ranks){
+        this.Ranks = ranks;
+    }
+
+    private String[] getRanks(String[] ranks){
+        return this.Ranks;
+    }
+
+
+
 
     //public void  setName(String name){this.name = name;}
 
