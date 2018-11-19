@@ -217,31 +217,6 @@ public  class Cards {
 
            }
 
-            public static Cards getCard(ArrayList<Cards> cards){
-
-
-
-        Cards card;
-        card = null;
-
-
-                card.getCards().get(0);
-                card.getCards().get(1);
-                card.getCards().get(2);
-                card.getCards().get(3);
-                card.getCards().get(4);
-                card.getCards().get(5);
-                card.getCards().get(6);
-                card.getCards().get(7);
-
-            cards.remove(card);
-
-//System.out.print("card"+card);
-                return card;
-
-
-
-            }
 
     public void addActionListener(ActionListener actionListener) {
     }
