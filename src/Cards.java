@@ -153,8 +153,66 @@ public  class Cards {
        jsCard.setPath("C:\\Users\\Patrick Riordan\\IdeaProjects\\memory\\out\\Images\\JackSpades.png");
        deck.add(jsCard);
 
+       Cards  ah2Card = new Cards();
+       ah2Card.setId(0);
+       ah2Card.setRanks("heart");
+       ah2Card.setValue("Ace");
+       ah2Card.setPath("C:\\Users\\Patrick Riordan\\IdeaProjects\\memory\\out\\Images\\AceHearts.png");
+       deck.add(ah2Card);
 
- //System.out.print("test\n"+deck +"\n\nend");
+       Cards  as2Card = new Cards();
+       as2Card.setId(1);
+       as2Card.setRanks("Spades");
+       as2Card.setValue("Ace");
+       as2Card.setPath("C:\\Users\\Patrick Riordan\\IdeaProjects\\memory\\out\\Images\\AceSpades.png");
+       deck.add(as2Card);
+
+       Cards  kh2Card = new Cards();
+       kh2Card.setId(2);
+       kh2Card.setRanks("Hearts");
+       kh2Card.setValue("King");
+       kh2Card.setPath("C:\\Users\\Patrick Riordan\\IdeaProjects\\memory\\out\\Images\\KingHearts.png");
+       deck.add(khCard);
+
+       Cards  ks2Card = new Cards();
+       ks2Card.setId(3);
+       ks2Card.setRanks("Spades");
+       ks2Card.setValue("King");
+       ks2Card.setPath("C:\\Users\\Patrick Riordan\\IdeaProjects\\memory\\out\\Images\\KingSpades.png");
+       deck.add(ks2Card);
+
+
+       Cards  qh2Card = new Cards();
+       qh2Card.setId(4);
+       qh2Card.setRanks("Hearts");
+       qh2Card.setValue("Queen");
+       qh2Card.setPath("C:\\Users\\Patrick Riordan\\IdeaProjects\\memory\\out\\Images\\QueenHearts.png");
+       deck.add(qh2Card);
+
+       Cards  qs2Card = new Cards();
+       qs2Card.setId(5);
+       qs2Card.setRanks("Spades");
+       qs2Card.setValue("Queen");
+       qs2Card.setPath("C:\\Users\\Patrick Riordan\\IdeaProjects\\memory\\out\\Images\\QueenSpades.png");
+       deck.add(qs2Card);
+
+       Cards  jh2Card = new Cards();
+       jh2Card.setId(6);
+       jh2Card.setRanks("Hearts");
+       jh2Card.setValue("Jack");
+       jh2Card.setPath("C:\\Users\\Patrick Riordan\\IdeaProjects\\memory\\out\\Images\\JackHearts.png");
+       deck.add(jh2Card);
+
+       Cards  js2Card = new Cards();
+       js2Card.setId(7);
+       js2Card.setRanks("Spades");
+       js2Card.setValue("Jack");
+       js2Card.setPath("C:\\Users\\Patrick Riordan\\IdeaProjects\\memory\\out\\Images\\JackSpades.png");
+       deck.add(js2Card);
+
+
+
+       //System.out.print("test\n"+deck +"\n\nend");
        return deck;
 
            }
