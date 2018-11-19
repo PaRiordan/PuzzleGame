@@ -1,24 +1,20 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
-
-import javax.swing.BorderFactory;
-
-
-
+import java.util.ArrayList;
 
 
 public class myGui extends JFrame implements ActionListener {
 
-
+ArrayList<Cards> gamedeck = new ArrayList();
     private JMenu playerMenu;
     private JMenu scoreMenu;
     private JMenu exitMenu;
    public Container container = getContentPane();
    public JPanel imagePanel;
+
 
 
     public myGui() {
@@ -142,6 +138,9 @@ public class myGui extends JFrame implements ActionListener {
 
         container.add(wallPic, BorderLayout.CENTER);
 
+        container.repaint();
+
+
     } // end of  myGui method
 
 
@@ -153,21 +152,34 @@ public class myGui extends JFrame implements ActionListener {
 
         } else if
             (e.getActionCommand().equals("Select") || e.getActionCommand().equals("START"))  {
+            Cards c = new Cards();
+            JOptionPane.showMessageDialog(null,c.toString()); //test
             selectButton();
-            repaint();
-            revalidate();            //  Got this working, it reset the area with the new method(gameArea) look into later..   https://stackoverflow.com/questions/36017159/jbutton-setvisiblefalse-setting-back-to-setvisibletrue-not-working
+
+
             Board b = new Board();
-           b.gameArea();
+            b.gameArea();
 
-            b.revalidate();
+          //  repaint();
+          //  revalidate();            //  Got this working, it reset the area with the new method(gameArea) look into later..   https://stackoverflow.com/questions/36017159/jbutton-setvisiblefalse-setting-back-to-setvisibletrue-not-working
 
 
-       // container.repaint();
+
+
+
+
+
+
+            //b.revalidate();
+
+
+
+            /*      TESTING
+            container.repaint();
             //buttonPanel.repaint();
-
-         //   Person P = new Player();
-           // JOptionPane.showMessageDialog(null, "test line"+ P.toString());   testing stuff
-
+             //   Person P = new Player();
+            JOptionPane.showMessageDialog(null, "test line"+ P.toString());   testing stuff
+                */
 
         }
                 else if (e.getActionCommand().equals("1")) {
