@@ -8,10 +8,11 @@ import java.util.ArrayList;
 
 public class myGui extends JFrame implements ActionListener {
 
-ArrayList<Cards> gamedeck = new ArrayList();
+
     private JMenu playerMenu;
     private JMenu scoreMenu;
     private JMenu exitMenu;
+    private JMenu fileMenu;
    public Container container = getContentPane();
    public JPanel imagePanel;
 
@@ -60,6 +61,9 @@ ArrayList<Cards> gamedeck = new ArrayList();
         createExitMenu();
         menuBar.add(exitMenu);
 
+        createFileMenu();
+        menuBar.add(fileMenu);
+
         //editing label
         //titleLabel.setBackground(Color.BLACK);
 
@@ -107,7 +111,7 @@ ArrayList<Cards> gamedeck = new ArrayList();
         JButton startButton = new JButton("START");
         startButton.setLayout(new FlowLayout());
         startButton.setAlignmentX(0.5f);
-        startButton.setBackground(Color.BLACK);
+        startButton.setBackground(Color.white);
         setPreferredSize(new Dimension(100, 120));
         startButton.addActionListener(this);
         startLabel.add(startButton);
@@ -121,7 +125,7 @@ ArrayList<Cards> gamedeck = new ArrayList();
 
         JButton exitButton = new JButton("Exit");
         exitButton.setAlignmentX(0.5f);
-        exitButton.setBackground(Color.BLUE);
+        exitButton.setBackground(Color.white);
         exitButton.addActionListener(this);
 
         exitLabel.add(exitButton);
@@ -152,8 +156,6 @@ ArrayList<Cards> gamedeck = new ArrayList();
 
         } else if
             (e.getActionCommand().equals("Select") || e.getActionCommand().equals("START"))  {
-            Cards c = new Cards();
-            JOptionPane.showMessageDialog(null,c.toString()); //test
             selectButton();
 
 
@@ -164,25 +166,10 @@ ArrayList<Cards> gamedeck = new ArrayList();
           //  revalidate();            //  Got this working, it reset the area with the new method(gameArea) look into later..   https://stackoverflow.com/questions/36017159/jbutton-setvisiblefalse-setting-back-to-setvisibletrue-not-working
 
 
-
-
-
-
-
-
-            //b.revalidate();
-
-
-
-            /*      TESTING
-            container.repaint();
-            //buttonPanel.repaint();
-             //   Person P = new Player();
-            JOptionPane.showMessageDialog(null, "test line"+ P.toString());   testing stuff
-                */
-
         }
-                else if (e.getActionCommand().equals("1")) {
+                else if (e.getActionCommand().equals("Display")) {
+
+                    System.exit(0);  // call a file here with scores
            // gameImages();
             //gameArea();
             revalidate();
@@ -217,6 +204,21 @@ ArrayList<Cards> gamedeck = new ArrayList();
 
     }
 
+    private void createFileMenu() {
+        fileMenu = new JMenu("File");
+         fileMenu.setMenuLocation(10, 26);
+
+        JMenuItem saveFile;
+        saveFile = new JMenuItem("Save");
+        scoreMenu.add(saveFile);
+
+        JMenuItem retrieveFile;
+        retrieveFile = new JMenuItem("retrieve");
+        retrieveFile.add(saveFile);
+
+
+    }
+
     //comment here
     private void createExitMenu() {
         exitMenu = new JMenu("exit");
@@ -236,22 +238,21 @@ ArrayList<Cards> gamedeck = new ArrayList();
             return null;
     }
 
-    protected ImageIcon createImageIcondog(String path) {
-        URL imgUrl = getClass().getResource("AceDiamonds.png");
-        if (imgUrl != null){
-            return new ImageIcon(imgUrl);
-        }else
-            return null;
-    }
 
-      private void selectButton(){
-     // final  JLabel image1 = new JLabel();
 
+      private void selectButton() {
+          // final  JLabel image1 = new JLabel();
 
           String name = JOptionPane.showInputDialog(null, "Yo what will I call you?");
+          if (name == "") {
+              JOptionPane.showInputDialog(null, "You gotta have a Name?");
+          } else {
+              Player player = new Player();
+              player.setName(name);
 
-          JOptionPane.showMessageDialog(null,"Alright "+name+ " Lets play Memory muscle");
-    }
+              JOptionPane.showMessageDialog(null, "Alright " + player.getName() + " Lets play Memory muscle");
+          }
+      }
 
 } // end of myGui class
 

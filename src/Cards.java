@@ -1,8 +1,5 @@
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Random;
 
 
 //https://books.trinket.io/thinkjava/chapter12.html
@@ -12,6 +9,7 @@ public  class Cards {
     private String Ranks;
     private String value;
     private String path;
+    private JLabel label;
 
 
 
@@ -49,29 +47,32 @@ public  class Cards {
         this.Ranks = ranks;
     }
 
+    public void setLabel(JLabel label){this.label = label;}
+
+
 
     //Accessors method
+
+
 
     int getId(int id)
     {
        return id;
     }
 
-        String getRanks(String ranks)
-    {
-        return ranks;
-    }
+        String getRanks(String ranks) { return ranks;}
 
-     String getValue(String value)
+        String getValue(String value)
     {
         return value;
     }
-
-  String getPath()
+        String getPath()
     {
         return path;
     }
-
+    public JLabel getLabel(JLabel label) {
+        return label;
+    }
 
    public String toString() {return "\nid: "+ getId(id)+ "\n rank"+getRanks(Ranks) +"\nvalue" + getValue(value)+"\n getpath" + getPath();}
 
@@ -217,9 +218,30 @@ public  class Cards {
 
            }
 
-
-    public void addActionListener(ActionListener actionListener) {
+    public static Cards getCard(ArrayList<Cards> deck){
+        Cards card;
+       card = null;
+        card.getCards().get(0);
+        card.getCards().get(1);
+        card.getCards().get(2);
+        card.getCards().get(3);
+        card.getCards().get(4);
+        card.getCards().get(5);
+        card.getCards().get(6);
+        card.getCards().get(7);
+        card.getCards().get(0);
+        card.getCards().get(1);
+        card.getCards().get(2);
+        card.getCards().get(3);
+        card.getCards().get(4);
+        card.getCards().get(5);
+        card.getCards().get(6);
+        card.getCards().get(7);
+//return a random card from deck and skip the card in any future hits
+        return card;
     }
+
+
 
 
 

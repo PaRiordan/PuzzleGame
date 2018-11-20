@@ -15,9 +15,13 @@ public class Board extends JFrame implements ActionListener {
     public ArrayList<Cards> gameDeck;
     public ArrayList<Cards> playDeck = new ArrayList<>();
 
-    public ArrayList<JLabel> labels = new ArrayList<>();
+    public ArrayList<JLabel> matchedLabels = new ArrayList<>();
     private List<JButton> buttons = new ArrayList();
     private List<JLabel> cardLabels = new ArrayList<>();
+    private JLabel selectedCard;
+    private JLabel firstPick;
+    private JLabel secondPick;
+
 
 
     public Board() {
@@ -74,7 +78,7 @@ public class Board extends JFrame implements ActionListener {
         //gameDeck.add(Cards.getCards().get(6));
         //gameDeck.add(Cards.getCards().get(7));
 
-        System.out.print("test" + gameDeck);
+    //    System.out.print("test" + gameDeck);
 
         //System.out.print("gamedeck"+gameDeck);
         // playDeck =Cards.getCards();
@@ -107,8 +111,8 @@ public class Board extends JFrame implements ActionListener {
         shuffleDeck.add(gameDeck.get(14));
         shuffleDeck.add(gameDeck.get(15));
 
-        System.out.print("test" + shuffleDeck);
-        Collections.shuffle(shuffleDeck);
+     //   System.out.print("test" + shuffleDeck);
+       // Collections.shuffle(shuffleDeck);
 
         // System.out.print("playdeck\n\n" + playDeck);
 
@@ -123,65 +127,36 @@ public class Board extends JFrame implements ActionListener {
 
 
         int gbCount = 1;
-        /*
-        for (int i = 0; i < 4; i++) { // create a loop of square buttons
 
-        //playCards =  playDeck.get(i);
-        //  playCards.getCard(playDeck);
+        int c = 0;
 
-        // System.out.print("playCard\n\n"+ playCards);
+        for (int j = 0; j < 16; j++) {
 
-        JLabel cardlabel = new JLabel();
-        playCards1 = shuffleDeck.get(i);
-        cardImage(cardlabel,playCards1);
+            JButton gameButton = new JButton();
+            gameButton.setText("" + gbCount);
+            gbCount++;
+            buttonPanel.add(gameButton);
+            gameButton.addActionListener(this);
+            buttons.add(gameButton);
 
-        for (int j = 0; j < 8; j++) {
-
-            //Collections.shuffle(playDeck);
-
-            labels.add(cardlabel);
+            JLabel cardlabel = new JLabel();
             playCards = shuffleDeck.get(j);
+            c++;
+            cardImage(cardlabel, playCards);
+            // ImageIcon icon = new ImageIcon(pathList.get(i));
+            //cardlabel.setIcon(icon);
 
+            //System.out.print("b"+gameButton.getText());
+            Border border = BorderFactory.createLineBorder(Color.BLACK, 2);  //https://examples.javacodegeeks.com/desktop-java/swing/jlabel/create-jlabel-with-border/
+            cardlabel.setBorder(border);
+            cardlabel.setText(""+c);
+            c++;
 
-            cardImage(cardlabel,playCards);
+            cardlabel.setVisible(false);
+            cardLabels.add(cardlabel);
+            buttonPanel.add(cardlabel);
 
-
-
-
-
-            buttonPanel.add(cardlabel,BorderLayout.CENTER);
-
-        }//end of second for
-    }//end of first for
-        */
-
-int c = 0;
-
-            for (int j = 0; j < 16; j++) {
-
-                JButton gameButton = new JButton();
-                gameButton.setText("" + gbCount);
-                gbCount++;
-                buttonPanel.add(gameButton);
-                gameButton.addActionListener(this);
-                buttons.add(gameButton);
-
-                JLabel cardlabel = new JLabel();
-                playCards = shuffleDeck.get(j);
-                c++;
-                cardImage(cardlabel, playCards);
-                // ImageIcon icon = new ImageIcon(pathList.get(i));
-                //cardlabel.setIcon(icon);
-
-                //System.out.print("b"+gameButton.getText());
-                Border border = BorderFactory.createLineBorder(Color.BLACK, 2);  //https://examples.javacodegeeks.com/desktop-java/swing/jlabel/create-jlabel-with-border/
-                cardlabel.setBorder(border);
-
-                cardlabel.setVisible(false);
-                cardLabels.add(cardlabel);
-                buttonPanel.add(cardlabel);
-
-            }
+        }
 
 
 /*
@@ -194,7 +169,6 @@ int c = 0;
   */
 
 
-
         //  System.out.print(labels.get(0));
         con.add(buttonPanel, BorderLayout.CENTER); //gotta look at adding all this to myGui
 
@@ -203,18 +177,82 @@ int c = 0;
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         for (int i = 0; i < 16; i++) {
 
-            if (e.getSource() == buttons.get(i)) {
+
+            if (e.getSource() == buttons.get(i)) {          //https://stackoverflow.com/questions/21228284/exception-in-thread-awt-eventqueue-0-java-lang-nullpointerexception-error
 
                 cardLabels.get(i).setVisible(true);
-                //  selectedCard = cardLabels.get(i);
-                //  doTurn();
-                //  JOptionPane.showMessageDialog(null,c1);
+                cardLabels.get(i).setText("  ");                            // gotta get help here, cant work it out
+
+                selectedCard = cardLabels.get(i);
+
+
+                doTurn();
+                System.out.print("dsfdfs"+firstPick);
+                //first time  selected card becomes first card
+              //checkCards();
+
+            //    cardLabels.get(i).setText("firstPick");
+              //  matchedLabels.add(cardLabels.get(i));
+
+                //JOptionPane.showMessageDialog(null,matchedLabels);
+                // selectedCard = cardLabels.get(i);
+                //doTurn();
             }
+         //   System.out.print("matched" + matchedLabels);
+
+
+
+        }
+
+        JOptionPane.showMessageDialog(null,firstPick,"first pick",JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null,secondPick,"second pic",JOptionPane.INFORMATION_MESSAGE);
+
+
+        System.out.print("secondcard"+ secondPick);
+
+
+    }
+    public void doTurn() {
+
+//https://stackoverflow.com/questions/21228284/exception-in-thread-awt-eventqueue-0-java-lang-nullpointerexception-error
+
+
+        if (selectedCard.getText().isEmpty()){
+            System.exit(0);
+        }
+
+        if (firstPick.getText().isEmpty()&& secondPick.getText().isEmpty()) {
+            firstPick = selectedCard;
+
+        }
+        if (firstPick.getText().isEmpty() && secondPick != selectedCard && secondPick.getText().isEmpty()){
+            secondPick = selectedCard;
 
         }
     }
+    public void checkCards(){
+        if (firstPick == secondPick){
 
-}
+            System.out.print("checking cards");//match condition
+            //c1.setEnabled(false); //disables the button
+            //c2.setEnabled(false);
+            //c1.setMatched(true); //flags the button as having been matched
+            //c2.setMatched(true);
+            //if (this.isGameWon()){
+              //  JOptionPane.showMessageDialog(this, "You win!");
+                //System.exit(0);
+            }
+        }
+
+        //else{
+          //  c1.setText(""); //'hides' text
+           // c2.setText("");
+        }
+        //c1 = null; //reset c1 and c2
+        //c2 = null;
+    //}
+//}
 
