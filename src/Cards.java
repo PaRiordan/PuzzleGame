@@ -70,18 +70,19 @@ public  class Cards {
     {
         return path;
     }
-    public JLabel getLabel(JLabel label) {
+
+        public JLabel getLabel(JLabel label) {
         return label;
     }
 
    public String toString() {return "\nid: "+ getId(id)+ "\n rank"+getRanks(Ranks) +"\nvalue" + getValue(value)+"\n getpath" + getPath();}
 
-
-   public static JTextArea cardArea(ArrayList<Cards> deck){
+    public static JTextArea cardArea(ArrayList<Cards> deck){
         JTextArea canvas = new JTextArea("deck");
         for (int i=0; i < deck.size();i++){
             canvas.append(deck.get(i).toString());
         }
+
 
 
 
@@ -237,7 +238,6 @@ public  class Cards {
         card.getCards().get(5);
         card.getCards().get(6);
         card.getCards().get(7);
-//return a random card from deck and skip the card in any future hits
         return card;
     }
 
@@ -245,9 +245,8 @@ public  class Cards {
 
 
 
-    // credit to mahoney for sending me on the right path
 
-    // w
+
        }
 
 

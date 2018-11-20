@@ -15,13 +15,16 @@ public class Board extends JFrame implements ActionListener {
     public ArrayList<Cards> gameDeck;
     public ArrayList<Cards> playDeck = new ArrayList<>();
 
-    public ArrayList<JLabel> matchedLabels = new ArrayList<>();
+    public ArrayList<JLabel> matchedLabels = new ArrayList<>(); // Thought about putting each choice and then comapring
+    // them
     private List<JButton> buttons = new ArrayList();
     private List<JLabel> cardLabels = new ArrayList<>();
     private JLabel selectedCard;
     private JLabel firstPick;
     private JLabel secondPick;
 
+    Player player;
+    ArrayList<Player> players = new ArrayList<>();
 
 
     public Board() {
@@ -40,10 +43,13 @@ public class Board extends JFrame implements ActionListener {
 
     } //end of Board
 
-
     public void cardImage(JLabel label, Cards cards) {
         ImageIcon imageIcon = new ImageIcon(new ImageIcon(cards.getPath()).getImage());
         label.setIcon(imageIcon);
+
+
+        // credit to James O Mahoney for sending me on the right path
+        // regarding adding images to an object.
     }
 
 
@@ -78,7 +84,7 @@ public class Board extends JFrame implements ActionListener {
         //gameDeck.add(Cards.getCards().get(6));
         //gameDeck.add(Cards.getCards().get(7));
 
-    //    System.out.print("test" + gameDeck);
+        //    System.out.print("test" + gameDeck);
 
         //System.out.print("gamedeck"+gameDeck);
         // playDeck =Cards.getCards();
@@ -111,8 +117,8 @@ public class Board extends JFrame implements ActionListener {
         shuffleDeck.add(gameDeck.get(14));
         shuffleDeck.add(gameDeck.get(15));
 
-     //   System.out.print("test" + shuffleDeck);
-       // Collections.shuffle(shuffleDeck);
+        //   System.out.print("test" + shuffleDeck);
+        // Collections.shuffle(shuffleDeck);
 
         // System.out.print("playdeck\n\n" + playDeck);
 
@@ -149,7 +155,7 @@ public class Board extends JFrame implements ActionListener {
             //System.out.print("b"+gameButton.getText());
             Border border = BorderFactory.createLineBorder(Color.BLACK, 2);  //https://examples.javacodegeeks.com/desktop-java/swing/jlabel/create-jlabel-with-border/
             cardlabel.setBorder(border);
-            cardlabel.setText(""+c);
+            cardlabel.setText("" + c);
             c++;
 
             cardlabel.setVisible(false);
@@ -187,54 +193,54 @@ public class Board extends JFrame implements ActionListener {
                 cardLabels.get(i).setText("  ");                            // gotta get help here, cant work it out
 
                 selectedCard = cardLabels.get(i);
-
+                System.out.print(getName());
 
                 doTurn();
-                System.out.print("dsfdfs"+firstPick);
+                System.out.print("dsfdfs" + firstPick);
                 //first time  selected card becomes first card
-              //checkCards();
+                //checkCards();
 
-            //    cardLabels.get(i).setText("firstPick");
-              //  matchedLabels.add(cardLabels.get(i));
+                //    cardLabels.get(i).setText("firstPick");
+                //  matchedLabels.add(cardLabels.get(i));
 
                 //JOptionPane.showMessageDialog(null,matchedLabels);
                 // selectedCard = cardLabels.get(i);
                 //doTurn();
             }
-         //   System.out.print("matched" + matchedLabels);
-
+            //   System.out.print("matched" + matchedLabels);
 
 
         }
 
-        JOptionPane.showMessageDialog(null,firstPick,"first pick",JOptionPane.ERROR_MESSAGE);
-        JOptionPane.showMessageDialog(null,secondPick,"second pic",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, firstPick, "first pick", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, secondPick, "second pic", JOptionPane.INFORMATION_MESSAGE);
 
 
-        System.out.print("secondcard"+ secondPick);
+        System.out.print("secondcard" + secondPick);
 
 
     }
+
     public void doTurn() {
 
 //https://stackoverflow.com/questions/21228284/exception-in-thread-awt-eventqueue-0-java-lang-nullpointerexception-error
 
+        //
 
-        if (selectedCard.getText().isEmpty()){
-            System.exit(0);
-        }
-
-        if (firstPick.getText().isEmpty()&& secondPick.getText().isEmpty()) {
+        if (firstPick.getText().isEmpty() && secondPick.getText().isEmpty()) {
             firstPick = selectedCard;
 
+            //if the first pick is empty
+
         }
-        if (firstPick.getText().isEmpty() && secondPick != selectedCard && secondPick.getText().isEmpty()){
+        if (!firstPick.getText().isEmpty() && secondPick != selectedCard && secondPick.getText().isEmpty()) {
             secondPick = selectedCard;
 
         }
     }
-    public void checkCards(){
-        if (firstPick == secondPick){
+
+    public void checkCards() {
+        if (firstPick == secondPick) {
 
             System.out.print("checking cards");//match condition
             //c1.setEnabled(false); //disables the button
@@ -242,17 +248,28 @@ public class Board extends JFrame implements ActionListener {
             //c1.setMatched(true); //flags the button as having been matched
             //c2.setMatched(true);
             //if (this.isGameWon()){
-              //  JOptionPane.showMessageDialog(this, "You win!");
-                //System.exit(0);
-            }
+            //  JOptionPane.showMessageDialog(this, "You win!");
+            //System.exit(0);
+        }
+    }
+
+    public void gameOver() {
+
+        JTextArea jta = new JTextArea("player");
+        for (Player player : players) ;
+        {
+            jta.append(player.toString());
+            JOptionPane.showMessageDialog(null, jta);
+
+            JOptionPane.showMessageDialog(null, jta);
+
+
         }
 
-        //else{
-          //  c1.setText(""); //'hides' text
-           // c2.setText("");
-        }
-        //c1 = null; //reset c1 and c2
-        //c2 = null;
-    //}
-//}
 
+        //
+
+        // Display text area here with name and scores
+        //add save file here
+    }
+}

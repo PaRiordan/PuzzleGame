@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -12,9 +13,12 @@ public class myGui extends JFrame implements ActionListener {
     private JMenu playerMenu;
     private JMenu scoreMenu;
     private JMenu exitMenu;
-    private JMenu fileMenu;
-   public Container container = getContentPane();
-   public JPanel imagePanel;
+    public Container container = getContentPane();
+    private String name;
+    Player player;
+
+
+
 
 
 
@@ -61,8 +65,6 @@ public class myGui extends JFrame implements ActionListener {
         createExitMenu();
         menuBar.add(exitMenu);
 
-        createFileMenu();
-        menuBar.add(fileMenu);
 
         //editing label
         //titleLabel.setBackground(Color.BLACK);
@@ -145,6 +147,8 @@ public class myGui extends JFrame implements ActionListener {
         container.repaint();
 
 
+
+
     } // end of  myGui method
 
 
@@ -157,10 +161,14 @@ public class myGui extends JFrame implements ActionListener {
         } else if
             (e.getActionCommand().equals("Select") || e.getActionCommand().equals("START"))  {
             selectButton();
-
-
+            System.out.print(name);
             Board b = new Board();
             b.gameArea();
+
+
+
+
+
 
           //  repaint();
           //  revalidate();            //  Got this working, it reset the area with the new method(gameArea) look into later..   https://stackoverflow.com/questions/36017159/jbutton-setvisiblefalse-setting-back-to-setvisibletrue-not-working
@@ -168,6 +176,9 @@ public class myGui extends JFrame implements ActionListener {
 
         }
                 else if (e.getActionCommand().equals("Display")) {
+                    scoreButton();
+                    openScore();// call the score button method
+                                    // which retrives the JtextArea file with names and scores
 
                     System.exit(0);  // call a file here with scores
            // gameImages();
@@ -200,24 +211,12 @@ public class myGui extends JFrame implements ActionListener {
 
         JMenuItem scoreItem;
         scoreItem = new JMenuItem("Display");
+        scoreItem.addActionListener(this);
         scoreMenu.add(scoreItem);
 
     }
 
-    private void createFileMenu() {
-        fileMenu = new JMenu("File");
-         fileMenu.setMenuLocation(10, 26);
 
-        JMenuItem saveFile;
-        saveFile = new JMenuItem("Save");
-        scoreMenu.add(saveFile);
-
-        JMenuItem retrieveFile;
-        retrieveFile = new JMenuItem("retrieve");
-        retrieveFile.add(saveFile);
-
-
-    }
 
     //comment here
     private void createExitMenu() {
@@ -240,19 +239,59 @@ public class myGui extends JFrame implements ActionListener {
 
 
 
-      private void selectButton() {
+      public void selectButton() {
           // final  JLabel image1 = new JLabel();
 
-          String name = JOptionPane.showInputDialog(null, "Yo what will I call you?");
-          if (name == "") {
+           name = JOptionPane.showInputDialog(null, "Yo what will I call you?");
+          if (name == null) {
               JOptionPane.showInputDialog(null, "You gotta have a Name?");
           } else {
-              Player player = new Player();
+                Player player = new Player();
               player.setName(name);
 
               JOptionPane.showMessageDialog(null, "Alright " + player.getName() + " Lets play Memory muscle");
           }
       }
+
+
+      private  void scoreButton(){
+
+          // retrive file code  here
+        // will retrive a JtextArea with name and scores
+
+      }
+
+
+      public void saveScore(ArrayList<Player> players) throws IOException {
+          File file = new File("score.dat");
+          FileOutputStream fos = new FileOutputStream(file);
+          ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+
+          oos.writeObject(players);
+          oos.close();
+
+
+      }
+      public static void openScore(){
+        try {
+            File file = new File("score.dat");
+            FileInputStream fos = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fos);
+
+            ArrayList<Player> players = (ArrayList<Player>) ois.readObject();
+            String display ="";
+            for (Player player : players ){
+                display += player.toString();
+            }
+            JOptionPane.showMessageDialog(null,display);
+            ois.close();
+        }
+          catch (Exception e){
+            JOptionPane.showMessageDialog(null,"Error in opening file");
+          }
+}
+
 
 } // end of myGui class
 
