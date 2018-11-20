@@ -190,13 +190,13 @@ public class Board extends JFrame implements ActionListener {
             if (e.getSource() == buttons.get(i)) {          //https://stackoverflow.com/questions/21228284/exception-in-thread-awt-eventqueue-0-java-lang-nullpointerexception-error
 
                 cardLabels.get(i).setVisible(true);
-                cardLabels.get(i).setText("  ");                            // gotta get help here, cant work it out
+                //cardLabels.get(i).setText("  ");                            // gotta get help here, cant work it out
 
                 selectedCard = cardLabels.get(i);
-                System.out.print(getName());
-
                 doTurn();
-                System.out.print("dsfdfs" + firstPick);
+              //  System.out.print(selectedCard);
+
+              //  System.out.print("dsfdfs" + firstPick);
                 //first time  selected card becomes first card
                 //checkCards();
 
@@ -210,8 +210,25 @@ public class Board extends JFrame implements ActionListener {
             //   System.out.print("matched" + matchedLabels);
 
 
-        }
 
+
+
+
+
+            //doTurn();
+
+
+            //System.out.print("dsfdfs" + firstPick);
+            //first time  selected card becomes first card
+            //checkCards();
+
+            //    cardLabels.get(i).setText("firstPick");
+            //  matchedLabels.add(cardLabels.get(i));
+
+            //JOptionPane.showMessageDialog(null,matchedLabels);
+            // selectedCard = cardLabels.get(i);
+            //doTurn();
+        }
         JOptionPane.showMessageDialog(null, firstPick, "first pick", JOptionPane.ERROR_MESSAGE);
         JOptionPane.showMessageDialog(null, secondPick, "second pic", JOptionPane.INFORMATION_MESSAGE);
 
