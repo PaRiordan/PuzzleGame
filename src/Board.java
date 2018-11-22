@@ -177,7 +177,8 @@ public class Board extends JFrame {
         if (firstPick.getId(0)== secondPick.getId(0)) {
 
             System.out.print("checking cards");//match condition
-            firstPick.setEnabled(false); //disables the button
+            firstPick.setEnabled(false); //disables the button              Got methods
+                                                                            // from https://codereview.stackexchange.com/questions/85833/basic-memory-match-game-in-java
             secondPick.setEnabled(false);
             firstPick.setMatched(true); //flags the button as having been matched
             secondPick.setMatched(true);
