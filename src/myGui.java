@@ -296,17 +296,3 @@ public class myGui extends JFrame implements ActionListener {
 } // end of myGui class
 
 
-
-
-// private void addPlayer(){
-//   String name = JOptionPane.showInputDialog("Hey so what will we call you?");
-//}
-
-// look at later
-/*
- private static void button(String text,Panel menuPanel){
-        JButton button = new JButton(text);
-        button.setAlignmentX(Component.CENTER_ALIGNMENT);
-        menuPanel.add(button);
-    }
- */

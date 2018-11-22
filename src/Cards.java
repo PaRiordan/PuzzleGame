@@ -3,14 +3,14 @@ import java.util.ArrayList;
 
 
 //https://books.trinket.io/thinkjava/chapter12.html
-public  class Cards {
+public  class Cards extends JButton {
 
     private int id;
     private String Ranks;
-    private String value;
+    public String value;
     private String path;
-    private JLabel label;
-
+    public JLabel label;
+    private boolean matched;
 
 
     public Cards(String ranks, String value, int id, String path){
@@ -47,7 +47,7 @@ public  class Cards {
         this.Ranks = ranks;
     }
 
-    public void setLabel(JLabel label){this.label = label;}
+    public void setLabel(JLabel cardlabel){this.label = label;}
 
 
 
@@ -55,7 +55,7 @@ public  class Cards {
 
 
 
-    int getId(int id)
+        int getId(int id)
     {
        return id;
     }
@@ -66,6 +66,7 @@ public  class Cards {
     {
         return value;
     }
+
         String getPath()
     {
         return path;
@@ -77,17 +78,6 @@ public  class Cards {
 
    public String toString() {return "\nid: "+ getId(id)+ "\n rank"+getRanks(Ranks) +"\nvalue" + getValue(value)+"\n getpath" + getPath();}
 
-    public static JTextArea cardArea(ArrayList<Cards> deck){
-        JTextArea canvas = new JTextArea("deck");
-        for (int i=0; i < deck.size();i++){
-            canvas.append(deck.get(i).toString());
-        }
-
-
-
-
-        return canvas;
-   }
 
 
 
@@ -102,7 +92,9 @@ public  class Cards {
        ahCard.setRanks("heart");
        ahCard.setValue("Ace");
        ahCard.setPath("C:\\Users\\Patrick Riordan\\IdeaProjects\\memory\\out\\Images\\AceHearts.png");
+       //ahCard.getLabel();
        deck.add(ahCard);
+
 
        Cards  asCard = new Cards();
        asCard.setId(1);
@@ -219,35 +211,27 @@ public  class Cards {
 
            }
 
-    public static Cards getCard(ArrayList<Cards> deck){
+    public static Cards getCard(Cards deck){
         Cards card;
-       card = null;
-        card.getCards().get(0);
-        card.getCards().get(1);
-        card.getCards().get(2);
-        card.getCards().get(3);
-        card.getCards().get(4);
-        card.getCards().get(5);
-        card.getCards().get(6);
-        card.getCards().get(7);
-        card.getCards().get(0);
-        card.getCards().get(1);
-        card.getCards().get(2);
-        card.getCards().get(3);
-        card.getCards().get(4);
-        card.getCards().get(5);
-        card.getCards().get(6);
-        card.getCards().get(7);
+        card = null;
+        for (int i = 0; i< 8;i++){
+            card = getCards().get(i);
+        }
+
+
         return card;
     }
 
+    public void setCard(Cards card) {
+    }
 
-
-
-
-
-
-       }
+    public void setMatched(boolean matched) {
+        this.matched = matched;
+    }
+    public boolean getMatched(){
+        return this.matched;
+    }
+}
 
 
 
