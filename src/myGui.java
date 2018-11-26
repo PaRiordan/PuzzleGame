@@ -243,7 +243,12 @@ public class myGui extends JFrame implements ActionListener {
       }
 
 
-     
+      private  void scoreButton(){
+
+        // retrive file code  here
+        // will retrive a JtextArea with name and scores
+
+    }
 
 
       public void saveScore(ArrayList<Player> players) throws IOException {
