@@ -144,7 +144,6 @@ public  class Cards extends JButton {
         ahCard.setRanks("heart");
         ahCard.setValue("Ace");
         ahCard.setPath("H:\\Semester 3\\OO_Programming\\PuzzleG\\out\\Images\\AceHearts.png");
-        //ahCard.getLabel();
         deck.add(ahCard);
 
 
@@ -274,8 +273,6 @@ public  class Cards extends JButton {
         return card;
     }
 
-    public void setCard(Cards card) {
-    }
 
     public void setMatched(boolean matched) {
         this.matched = matched;

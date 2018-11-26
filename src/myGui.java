@@ -65,10 +65,6 @@ public class myGui extends JFrame implements ActionListener {
         createExitMenu();
         menuBar.add(exitMenu);
 
-
-        //editing label
-        //titleLabel.setBackground(Color.BLACK);
-
         //editing label
         //titleLabel.setBackground(Color.BLACK);
 
@@ -168,12 +164,6 @@ public class myGui extends JFrame implements ActionListener {
 
 
 
-
-
-          //  repaint();
-          //  revalidate();            //  Got this working, it reset the area with the new method(gameArea) look into later..   https://stackoverflow.com/questions/36017159/jbutton-setvisiblefalse-setting-back-to-setvisibletrue-not-working
-
-
         }
                 else if (e.getActionCommand().equals("Display")) {
                     scoreButton();
@@ -256,10 +246,10 @@ public class myGui extends JFrame implements ActionListener {
 
       private  void scoreButton(){
 
-          // retrive file code  here
+        // retrive file code  here
         // will retrive a JtextArea with name and scores
 
-      }
+    }
 
 
       public void saveScore(ArrayList<Player> players) throws IOException {
