@@ -15,7 +15,7 @@ public class myGui extends JFrame implements ActionListener {
     private JMenu exitMenu;
     public Container container = getContentPane();
     private String name;
-    Player player;
+
 
 
 
@@ -230,7 +230,6 @@ public class myGui extends JFrame implements ActionListener {
 
 
       public void selectButton() {
-          // final  JLabel image1 = new JLabel();
 
            name = JOptionPane.showInputDialog(null, "Yo what will I call you?");
           if (name == null) {
@@ -244,12 +243,7 @@ public class myGui extends JFrame implements ActionListener {
       }
 
 
-      private  void scoreButton(){
-
-        // retrive file code  here
-        // will retrive a JtextArea with name and scores
-
-    }
+     
 
 
       public void saveScore(ArrayList<Player> players) throws IOException {
